@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const StyledArticles = styled.ul`
   position: relative;
@@ -51,19 +52,28 @@ const StyledPrice = styled.span`
 `;
 
 const List = () => {
+  const groceryItems = useSelector((state) => state.groceryItems);
+
   return (
     <>
       <StyledArticles className="list-unstyled col-12">
-        <StyledArticle className="row">
-          <StyledCheckboxContainer className="col">
-            <input type="checkbox" />
-          </StyledCheckboxContainer>
-          <StyledArticleName className="px-0 col">Pan</StyledArticleName>
-          <StyledPrice className="col">0.75€</StyledPrice>
-          <a href="delete-article" className="col">
-            <FaTimes className="icon" />
-          </a>
-        </StyledArticle>
+        {groceryItems.map((groceryItem) => {
+          return (
+            <StyledArticle className="row" key={groceryItem.id}>
+              <StyledCheckboxContainer className="col">
+                <input type="checkbox" />
+              </StyledCheckboxContainer>
+              <StyledArticleName className="px-0 col">
+                {groceryItem.name}
+              </StyledArticleName>
+              <StyledPrice className="col">{groceryItem.price}€</StyledPrice>
+              <a href="delete-article" className="col">
+                <FaTimes className="icon" />
+              </a>
+            </StyledArticle>
+          );
+        })}
+        ;
       </StyledArticles>
       <StyledTotal className="col-12 text-end">1.95€</StyledTotal>
     </>
