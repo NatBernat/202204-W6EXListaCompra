@@ -52,7 +52,7 @@ const StyledPrice = styled.span`
 `;
 
 const List = () => {
-  const groceryItems = useSelector((state) => state.groceryItems);
+  const groceryItems = useSelector((state) => state.grocery);
 
   return (
     <>
@@ -73,7 +73,6 @@ const List = () => {
             </StyledArticle>
           );
         })}
-        ;
       </StyledArticles>
       <StyledTotal className="col-12 text-end">1.95€</StyledTotal>
     </>
