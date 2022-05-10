@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const GrocerySlice = createSlice({
-  name: "foodStuff",
+const grocerySlice = createSlice({
+  name: "groceryItems",
   initialState: [],
   reducers: {
     loadGroceryList: (state, action) => [...action.payload],
   },
 });
 
-export const groceryReducer = GrocerySlice.reducer;
+export const groceryReducer = grocerySlice.reducer;
+
+export const { loadGroceryList: loadGroceryListActionCreator } =
+  grocerySlice.actions;

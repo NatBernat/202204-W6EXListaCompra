@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { projectReducers } from "projectReducers.js";
+import { groceryReducer } from "../features/grocerySlice/grocerySlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    grocery: projectsReducer,
+    grocery: groceryReducer,
   },
 });
-
-export default store;
